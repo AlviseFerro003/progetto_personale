@@ -1,0 +1,21 @@
+.body_login
+{
+    background-image: url("../images/Sfondo.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.body-calendario
+{
+
+}
+.form
+{
+    border: 0,2cm;
+}
+.dycalendar-body
+{
+    width: 100%;
+    height: 100%;
+}
