@@ -6,7 +6,7 @@
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "PROGETTO_PERSONALE";
+    $database = "progetto_personale";
 
 
 
