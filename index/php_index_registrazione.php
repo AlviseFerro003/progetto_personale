@@ -5,6 +5,39 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
     
+
+    //modificarlo per fare la query di inserimento nel db se utente inesistente
+    try
+    {
+        $connection = new PDO("mysql:host=localhost;dbname=PROGETTO_PERSONALE","root","");
+        $query = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
+        $result = $connection->query($query);
+        if( $result->fetchColumn() > 0)
+        {
+            header("location: ../calendario/Calendario.html");
+            exit;
+        }
+        else
+        {
+            echo ("utente non trovato");
+            header("location: index.html");
+            exit;
+        }
+        $result->closeCursor();
+        $connection = NULL;
+    }
+    catch (PDOException $exception)
+    {
+        echo "errore di accesso al db";
+        die;
+    }
+
+
+
+
+/*
+
+
     //connessione al database
     $hostd = "127.0.0.1";
     $userd = "root";
@@ -39,4 +72,5 @@
 
     //chiusura della connessione
     $connessione->close();
+    */
 ?>

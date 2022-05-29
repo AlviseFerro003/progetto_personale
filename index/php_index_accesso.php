@@ -3,11 +3,43 @@
     $email = $_POST["emailL"];
     $password = $_POST["passwordLogin"];
 
-    $host = "localhost";
-    $user = "root";
-    $password = "";
-    $database = "progetto_personale";
+    try
+    {
+        $connection = new PDO("mysql:host=localhost;dbname=PROGETTO_PERSONALE","root","");
+        $query = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
+        $result = $connection->query($query);
+        if( $result->fetchColumn() > 0)
+        {
+            header("location: ../calendario/Calendario.html");
+            exit;
+        }
+        else
+        {
+            echo ("utente non trovato");
+            header("location: index.html");
+            exit;
+        }
+        $result->closeCursor();
+        $connection = NULL;
+    }
+    catch (PDOException $exception)
+    {
+        echo "errore di accesso al db";
+        die;
+    }
 
+
+
+
+
+
+
+    /*
+        $host = "localhost";
+        $user = "root";
+        $password = "";
+        $database = "progetto_personale";
+    */
 
 
     /*
@@ -20,7 +52,7 @@
 */
 
 
-
+    /*
     $connessione = new mysqli($host, $user, $password, $database);
     if ($connessione === false)
     {
@@ -47,5 +79,6 @@
 
 
     $connessione->close();
+    */
 ?>
 <!--connessione al database:   https://howto.webarea.it/php/come-effettuare-una-connessione-a-mysql-tramite-php-utilizzando-estensione-mysqli-o-pdo-o-mysql-functions_213-->
