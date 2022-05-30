@@ -4,11 +4,12 @@
     $cognome = $_POST ["cognome"];
     $email = $_POST["email"];
     $password = $_POST["password"];
-    
+
     //modificarlo per fare la query di inserimento nel db se utente inesistente
     try
     {
         $connection = new PDO("mysql:host=localhost;dbname=PROGETTO_PERSONALE","root","");
+
         $query_controllo = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
         $result = $connection->query($query);
         if( $result->fetchColumn() > 0)
@@ -19,12 +20,20 @@
                     alert('$message');
                 </script>";
             header("location: index.html");
+        }
+        $query = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
+        $result = $connection->query($query);
+        if( $result->fetchColumn() > 0)
+        {
+            header("location: ../calendario/Calendario.html");
             exit;
         }
         else
         {
             $query = "INSERT INTO `Utente` (`nome`, `cognome`, `email`, `password`) VALUES ($nome, $cognome, $email, $password)";
             header("location: calendario/Calendario.html");
+            echo ("utente non trovato");
+            header("location: index.html");
             exit;
         }
         $result->closeCursor();
