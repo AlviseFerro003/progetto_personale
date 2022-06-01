@@ -10,7 +10,8 @@
         
         // sulla macchina virtuale del sito
         $connection = new PDO("mysql:host=localhost;dbname=progetto_personale","root","");
-        $query = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
+
+        $query = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
         $result = $connection->query($query);
         if( $result->fetchColumn() > 0)
         {

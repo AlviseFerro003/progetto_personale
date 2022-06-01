@@ -10,7 +10,7 @@
     {
         $connection = new PDO("mysql:host=localhost;dbname=PROGETTO_PERSONALE","root","");
 
-        $query_controllo = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
+        $query_controllo = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
         $result = $connection->query($query);
         if( $result->fetchColumn() > 0)
         {
@@ -21,7 +21,7 @@
                 </script>";
             header("location: index.html");
         }
-        $query = "SELECT * FROM Promemoria, Utente WHERE Utente.email = $email AND Utente.password = $password";
+        $query = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
         $result = $connection->query($query);
         if( $result->fetchColumn() > 0)
         {
@@ -30,7 +30,7 @@
         }
         else
         {
-            $query = "INSERT INTO `Utente` (`nome`, `cognome`, `email`, `password`) VALUES ($nome, $cognome, $email, $password)";
+            $query = "INSERT INTO `utente` (`nome`, `cognome`, `email`, `password`) VALUES ($nome, $cognome, $email, $password)";
             header("location: calendario/Calendario.html");
             echo ("utente non trovato");
             header("location: index.html");
