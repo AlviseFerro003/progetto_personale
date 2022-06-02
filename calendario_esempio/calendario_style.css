@@ -1,0 +1,230 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+section             /* sfondo */
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: rgb(10, 21, 69);
+}
+section::before     /* sfera arancio rosa */
+{
+    content: '';
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: linear-gradient(#ffc107,#e91e63);
+    border-radius: 50%;
+    transform: translate(-300px,-180px);
+    border-right:  45px solid rgba(0, 0, 0, 0.2);
+}
+section::after      /* sfera verde celeste */
+{
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: linear-gradient(#2196f3,#31ff38);
+    border-radius: 50%;
+    transform: translate(300px,180px);
+    border-right:  30px solid rgba(0, 0, 0, 0.2);
+}
+.box                /* box del calendario */
+{
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    padding: 3%;
+    width: 100%;
+    height: 100%;
+}
+.container      /*container trasparente del calendario*/
+{
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(25px);
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#dycalendar     /*posizionamento contenuto containerd*/
+{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+#dycalendar table   /*spaziature e layout dei numeri dentro il calendario*/
+{
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    margin-right: 5px;
+}
+#dycalendar table tr:nth-child(1) td    /*lettere dei giorni*/
+{
+    background: #fff;
+    color: #111;
+    border-radius: 24px;
+    font-weight: 600;
+}
+#dycalendar table td
+{
+    color: #fff;
+    padding: 3%;
+    min-height: 300px;
+    min-width: 200;
+    cursor: pointer;
+    border-radius: 25px;
+}
+#dycalendar table td:hover
+{
+    background: #fff;
+    color: #111 !important;
+    transition: 0.4s;
+}
+.dycalendar-month-
+ .dycalendar-today-date, .dycalendar-month-container .dycalendar-today-date
+{
+    background: #fff;
+    color: #111 !important;
+}
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.prev-btn
+{
+    background: #fff;
+    color: #111;
+    width: 44px;
+    height: 38px;
+    left: 4px;
+    border-radius: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+.dycalendar-month-container .dycalendar-header .dycalendar-prev-next-btn.next-btn
+{
+    background: #fff;
+    color: #111;
+    width: 44px;
+    height: 38px;
+    right: 4px;
+    border-radius: 24px;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    display: flex;
+}
+.dycalendar-month-container .dycalendar-span-month-year
+{
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+
+/*=============================================================================================================*/
+
+/*prova 1*/
+
+
+/* prova mia per il popup */
+#dycalendar table td:active
+{
+    background: rgb(242, 0, 255);
+    color: #111 !important;
+    transition: 0.1s;
+}
+
+
+
+
+/* Popup container */
+/* Contenitore popup */
+/* a me nn utile */     /* referenza--->https://www.w3schools.com/howto/howto_js_popup.asp*/
+.popup
+{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+/* Il popup effettivo (appare in alto) */
+.popup .popuptext
+{
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+/* Freccia popup */
+.popup .popuptext::after
+{
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+/* Attiva questa classe quando fai clic sul contenitore popup (nascondi e mostra il popup) */
+.popup .show
+{
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+/* Add animation (fade in the popup) */
+/* Aggiungi animazione (sbiadiscono nel popup) */
+@-webkit-keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    } 
+    to
+    {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn
+{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity:1 ;
+    }
+}
+
+
+
+/*==============================================================================================================*/
+
+/*prova 2*/

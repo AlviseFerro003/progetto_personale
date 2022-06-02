@@ -1,4 +1,11 @@
 <?php
+
+    //sessione
+    session_start();
+
+
+
+
     //dati presi fal form dell'index
     $nome = $_POST["nome"];
     $cognome = $_POST ["cognome"];
@@ -8,9 +15,12 @@
     //modificarlo per fare la query di inserimento nel db se utente inesistente
     try
     {
-        $connection = new PDO("mysql:host=localhost;dbname=PROGETTO_PERSONALE","root","");
+        $connection = new PDO("mysql:host=localhost;dbname=progetto_personale","root","");
 
-        $query_controllo = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
+        $query_controllo = "SELECT"
+
+
+        $query_controlloNO = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
         $result = $connection->query($query);
         if( $result->fetchColumn() > 0)
         {
