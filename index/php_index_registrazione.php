@@ -1,10 +1,7 @@
 <?php
 
     //sessione
-    session_start();
-
-
-
+    //session_start();
 
     //dati presi fal form dell'index
     $nome = $_POST["nome"];
@@ -16,13 +13,9 @@
     try
     {
         $connection = new PDO("mysql:host=localhost;dbname=progetto_personale","root","");
-
-        $query_controllo = "SELECT"
-
-
-        $query_controlloNO = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
-        $result = $connection->query($query);
-        if( $result->fetchColumn() > 0)
+        $query_controllo = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";        
+        $result = $connection->query($query_controllo);
+        if( $result == true )
         {
             $message = "esiste già un utente con queste credenziali";
             echo "
@@ -31,19 +24,10 @@
                 </script>";
             header("location: index.html");
         }
-        $query = "SELECT * FROM promemoria, utente WHERE utente.email = $email AND utente.password = $password";
-        $result = $connection->query($query);
-        if( $result->fetchColumn() > 0)
-        {
-            header("location: ../calendario/Calendario.html");
-            exit;
-        }
         else
         {
-            $query = "INSERT INTO `utente` (`nome`, `cognome`, `email`, `password`) VALUES ($nome, $cognome, $email, $password)";
-            header("location: calendario/Calendario.html");
-            echo ("utente non trovato");
-            header("location: index.html");
+            $query_inserimento = "INSERT INTO `utente` (`nome`, `cognome`, `email`, `password`) VALUES ('Lorenzo', 'Ferro', 'ferro.lorenzo.3@gmail.com', 'ciao')"
+            header("location: ../calendario/Calendario.html");
             exit;
         }
         $result->closeCursor();
